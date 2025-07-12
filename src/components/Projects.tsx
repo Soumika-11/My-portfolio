@@ -37,7 +37,7 @@ const Projects = () => {
     },
     {
       title: "Portfolio Website",
-      description: "A responsive portfolio website showcasing modern design principles, smooth animations, and optimized performance.",
+      description: "A responsive portfolio website by Soumika Das, showcasing modern design principles, smooth animations, and optimized performance.",
       image: "/api/placeholder/600/400",
       tags: ["React", "Tailwind", "Framer Motion", "Vite"],
       github: "#",

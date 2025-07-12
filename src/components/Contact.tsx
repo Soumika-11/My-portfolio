@@ -41,17 +41,17 @@ const Contact = () => {
     {
       icon: <MapPin className="w-6 h-6" />,
       title: "Location",
-      details: "San Francisco, CA"
+      details: "Kolkata, India"
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Phone",
-      details: "+1 (555) 123-4567"
+      details: "8617233878"
     },
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      details: "alex@example.com"
+      details: "dassoumika11@gmail.com"
     }
   ];
 

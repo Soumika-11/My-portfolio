@@ -113,11 +113,11 @@ All colors MUST be HSL.
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   body {
-    @apply bg-background text-foreground;
+    color: hsl(var(--foreground));
     background: var(--gradient-hero);
     min-height: 100vh;
   }
@@ -129,8 +129,9 @@ All colors MUST be HSL.
 
 @layer components {
   .glass-card {
-    @apply backdrop-blur-xl bg-card/50 border border-white/10 shadow-lg;
+    backdrop-filter: blur(24px);
     background: var(--gradient-glass);
+    border: 1px solid rgba(255,255,255,0.1);
     box-shadow: var(--shadow-glass);
   }
   
@@ -139,7 +140,6 @@ All colors MUST be HSL.
   }
   
   .hover-lift {
-    @apply transition-all duration-300 hover:scale-105 active:scale-95;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     /* Touch-friendly improvements */
     touch-action: manipulation;
@@ -164,7 +164,9 @@ All colors MUST be HSL.
   
   /* Touch-friendly button improvements */
   .touch-button {
-    @apply min-h-[44px] min-w-[44px] touch-manipulation;
+    min-height: 44px;
+    min-width: 44px;
+    touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
   
@@ -176,14 +178,19 @@ All colors MUST be HSL.
   
   /* Touch-friendly navigation */
   .touch-nav {
-    @apply p-4 min-h-[48px] flex items-center justify-center;
+    padding: 1rem;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
   }
   
   /* Swipe indicators */
   .swipe-indicator {
-    @apply relative overflow-hidden;
+    position: relative;
+    overflow: hidden;
   }
   
   .swipe-indicator::after {

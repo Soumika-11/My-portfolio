@@ -36,19 +36,19 @@ const Header = () => {
         isScrolled ? "glass-card" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="text-2xl font-bold gradient-text">
+      <div className="container mx-auto px-2 sm:px-4 py-2 md:py-4">
+        <div className="flex items-center justify-between gap-2 md:gap-8">
+          <div className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-bold gradient-text tracking-tight px-1 py-1">
             Portfolio
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex gap-1 sm:gap-3 md:gap-4 lg:gap-6 xl:gap-10">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-primary transition-colors duration-200 hover:scale-105 touch-nav"
+                className="text-sm xs:text-base sm:text-lg md:text-xl px-2 sm:px-3 md:px-4 py-2 rounded-md text-muted-foreground hover:text-primary transition-colors duration-200 hover:scale-105 touch-nav font-medium tracking-wide"
               >
                 {item.label}
               </button>
@@ -59,29 +59,42 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden touch-button"
+            className="md:hidden touch-button p-2"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           >
-            {isMenuOpen ? <X /> : <Menu />}
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </Button>
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 animate-fade-in">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-left text-muted-foreground hover:text-primary transition-colors duration-200 touch-nav swipe-indicator"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </nav>
-        )}
+        <nav
+          className={`fixed inset-0 bg-background/95 z-40 flex flex-col items-center justify-center transition-all duration-300 md:hidden ${
+            isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
+          style={{ minHeight: '100dvh' }}
+        >
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute top-4 right-4 sm:top-6 sm:right-6 touch-button p-2"
+            onClick={() => setIsMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={32} />
+          </Button>
+          <div className="flex flex-col space-y-3 xs:space-y-4 sm:space-y-6 text-lg xs:text-xl sm:text-2xl font-semibold w-full max-w-xs px-2 sm:px-4">
+            {navItems.map((item) => (
+              <button
+                key={item.href}
+                onClick={() => scrollToSection(item.href)}
+                className="w-full text-center text-muted-foreground hover:text-primary transition-colors duration-200 touch-nav swipe-indicator px-3 sm:px-4 py-2 sm:py-3 rounded-lg font-medium tracking-wide"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </nav>
       </div>
     </header>
   );
